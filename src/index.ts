@@ -7,6 +7,7 @@ import microConfig from "./mikro-orm.config";
 import { __prod__ } from "./constants";
 import { HelloResolver } from "./resolvers/hello";
 import { TaskResolver } from './resolvers/task';
+import { UserResolver } from './resolvers/user';
 
 const main = async () => {
   const orm = await MikroORM.init(microConfig);
@@ -16,7 +17,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloResolver, TaskResolver],
+      resolvers: [HelloResolver, TaskResolver, UserResolver],
       validate: false,
     }),
     context: () => ({ em: orm.em })

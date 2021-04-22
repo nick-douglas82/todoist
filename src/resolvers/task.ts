@@ -18,7 +18,7 @@ export class TaskResolver {
   }
 
   @Mutation(() => Task)
-  async createPost(
+  async createTask(
     @Arg('title') title: string,
     @Ctx() { em }: MyContext
   ): Promise<Task> {
@@ -28,7 +28,7 @@ export class TaskResolver {
   }
 
   @Mutation(() => Task, { nullable: true })
-  async updatePost(
+  async updateTask(
     @Arg('id') id: number,
     @Arg('title') title: string,
     @Ctx() { em }: MyContext
@@ -45,7 +45,7 @@ export class TaskResolver {
   }
 
   @Mutation(() => Boolean)
-  async deletePost(
+  async deleteTask(
     @Arg('id') id: number,
     @Ctx() { em }: MyContext
   ): Promise<boolean> {
